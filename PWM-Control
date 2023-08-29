@@ -1,0 +1,11 @@
+import board
+import pwmio
+import time
+
+#how to get a range of 0-1 without including 1(value-min)/(max-min+1)
+led = pwmio.PWMOut(board.LED, frequency=5000, duty_cycle = 0)
+#Percent on is going to be the value from the potentiometer turned into a percent brightness.
+percent_on = 99
+while True:
+    led.duty_cycle = int(65535 * percent_on / 100)
+    time.sleep(0.1)
