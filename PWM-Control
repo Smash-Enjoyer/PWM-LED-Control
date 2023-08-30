@@ -11,10 +11,19 @@ percent_on = 99
 max = 65535
 min = 32
 
-while True:
+def bright():
+    percent_on = (pot.value - min)/(max-min+1)
     led.duty_cycle = int(65535 * percent_on / 100)
     time.sleep(0.1)
+    print(pot.value)
+    time.sleep(0.1)    
+    
+def dim():
+    percent_on = 1 - (pot.value - min)/(max-min+1)
+    led.duty_cycle = int(65535 * percent_on / 100)
     time.sleep(0.1)
     print(pot.value)
     time.sleep(0.1)
-    percent_on = (pot.value - min)/(max-min+1)
+
+while True:
+    bight()
